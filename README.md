@@ -11,11 +11,11 @@ The goal of this project was to build a tool that can monitor crime & safety tre
 
 ## Tooling
 Development was done in python 3.12. The required dependencies are listed in *requirements.txt*. 
-* For more info on recreating the dev environment from the requirements file, click [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#using-a-requirements-file).
+* For more info on recreating the dev environment, click [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#using-a-requirements-file).
 
-[Prefect](https://www.prefect.io/) was used to orchestrate & schedule pipeline execution. Originally, I tried to use Airflow for this, but I ran into lots of difficulty trying to install the dependencies my code required into the Airflow environment, even after following the documentation [here](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#special-case-adding-dependencies-via-requirements-txt-file) and [here](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#special-case-adding-dependencies-via-requirements-txt-file). Prefect makes defining pipelines extremely simple with minimal setup - you can define your workflows very easily using basic python, and you don't have to worry about dependency mismatches between your local development environment and the environment where your pipeline is executed. For this project, I used [Prefect Cloud](https://docs.prefect.io/v3/how-to-guides/cloud/connect-to-cloud) - it takes care of the infrastructure where your pipeline is executed.
+[Prefect](https://www.prefect.io/) was used to orchestrate pipeline execution. Originally I tried to use Airflow, but I ran into difficulties trying to install my required dependencies into the Airflow environment (where the pipeline is executed), even after following the documentation [here](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#special-case-adding-dependencies-via-requirements-txt-file) and [here](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#special-case-adding-dependencies-via-requirements-txt-file). Prefect allows you to [define pipelines](https://docs.prefect.io/v3/concepts/flows) by simply adding decorators to python functions, and [deployment](https://docs.prefect.io/v3/how-to-guides/deployments/create-deployments) is really easy. For this project, I used [Prefect Cloud](https://docs.prefect.io/v3/how-to-guides/cloud/connect-to-cloud), which takes care of the infrastructure where your pipeline is executed.
 
-[Pandas](https://pandas.pydata.org/docs/index.html) was used for data validation and transformation, as the data that we're working with is quite small (< 10k rows). Thus, in memory data manipulation/transformation is not a huge concern. We may consider using a distributed data processing platform (ex: Apache Spark) if the dataset size increases drastically, but for now that's not really necessary. 
+[Pandas](https://pandas.pydata.org/docs/index.html) is used for data validation & transformation. It makes data manipulation easy, and the data that we're working with is quite small (< 10k rows). If the size of the data increases drastically, we may consider using more powerful tools (ex: [Polars](https://pola.rs/), [Spark](https://spark.apache.org/docs/latest/api/python/index.html)), but that's really not necessary right now for this data.
 
 [PostgreSQL](https://www.postgresql.org/) is the database used to store the transformed data. I spun up a local instance of Postgres by defining it as a service in the *compose.yaml*. 
 
@@ -25,18 +25,18 @@ Development was done in python 3.12. The required dependencies are listed in *re
 
 ## File Information
 **Pipeline development:**
-* *extract.py* - extract CPD data from Socrata API
-* *validate.py* - data quality checks for extracted data
-* *transform.py* - data transformations to execute on validated data
-* *load.py* - import transformed data into Postgres
-* *etl_pipeline.py* - pipeline that orchestrates the ETL process
-* *testing.ipynb* - used during development to test out individual components
+* *extract.py* - extract CPD data via Socrata API
+* *validate.py* - data quality checks
+* *transform.py* - data transformations
+* *load.py* - load data into Postgres
+* *etl_pipeline.py* - ETL pipeline that defines our workflow
+* *testing.ipynb* - notebook used during development to test out individual components
 
 **Architecture/Configuration**
 * *compose.yaml* - configuration of services
 
 **Dependencies**
-* *requirements.txt* - dependencies required for python development
+* *requirements.txt* - required python dependencies
 
 ## Resources  
 **Prefect:**
