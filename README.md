@@ -25,10 +25,10 @@ Development was done in python 3.12. The required dependencies are listed in *re
 
 ## File Information
 **Pipeline development:**
-* *extract.py* - extract CPD data via Socrata API
-* *validate.py* - data quality checks
-* *transform.py* - data transformations
-* *load.py* - load data into Postgres
+* *etl/extract.py* - extract CPD data via Socrata API
+* *etl/validate.py* - data quality checks
+* *etl/transform.py* - data transformations
+* *etl/load.py* - load data into Postgres
 * *etl_pipeline.py* - ETL pipeline that defines our workflow
 * *testing.ipynb* - notebook used during development to test out individual components
 

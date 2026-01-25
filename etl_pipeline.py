@@ -1,7 +1,7 @@
-from extract import extract_data
-from validate import validate_data
-from transform import transform_data
-from load import load_into_postgres
+from etl.extract import extract_data
+from etl.validate import validate_data
+from etl.transform import transform_data
+from etl.load import load_into_postgres
 from prefect import flow
 
 @flow(name="cpd_incident_etl", log_prints=True)
