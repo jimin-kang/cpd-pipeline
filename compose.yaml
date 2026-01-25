@@ -62,12 +62,14 @@ services:
     networks:
       - metanet1
 
-# define separate volumes to isolate DB configuration and data files for each Postgres instance
+# Here, we'll define separate volumes to isolate DB configuration & data files for each Postgres database.
+# Our Postgres DB for our application should store its config/data separately from the Postgres DB our Metabase service relies on.
 volumes:
   pgdata_cpd:
   pgdata_mb:
 
+# define the network over which all the services will communicate
 networks:
   metanet1:
-    driver: bridge
+    driver: bridge # TO DO: 'bridge' is the default network - services will be able to communicate with each other using their service names
 

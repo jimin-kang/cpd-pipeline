@@ -33,10 +33,10 @@ Development was done in python 3.12. The required dependencies are listed in *re
 * *testing.ipynb* - notebook used during development to test out individual components
 
 **Architecture/Configuration**
-* *compose.yaml* - configuration of services
+* *compose.yaml* - defines/configures all the required components of our project
 
 **Dependencies**
-* *requirements.txt* - required python dependencies
+* *requirements.txt* - list of all python dependencies
 
 ## Resources  
 **Prefect:**
