@@ -32,7 +32,7 @@ services:
     volumes:
       - /dev/urandom:/dev/random:ro
     ports:
-      - 3000:3000
+      - "3000:3000"
     environment:
       MB_DB_TYPE: postgres
       MB_DB_DBNAME: metabaseappdb
@@ -52,9 +52,9 @@ services:
     container_name: postgres_metabase # other services must use this name to communicate with this container
     hostname: postgres_metabase # internal identifier, doesn't impact communication with other services (helpful for logs)
     environment:
-      POSTGRES_USER: metabase
+      POSTGRES_USER: ${METABASE_DB_USER}
       POSTGRES_DB: metabaseappdb
-      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_PASSWORD: ${METABASE_DB_PASSWORD}
     ports:
       - "5434:5432" 
     volumes:
