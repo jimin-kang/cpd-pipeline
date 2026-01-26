@@ -38,6 +38,10 @@ Development was done in python 3.12. The required dependencies are listed in *re
 **Dependencies**
 * *requirements.txt* - list of all python dependencies
 
+**Diagrams**
+* *metabase-dashboard.pdf* - Metabase dashboard visualizing recent & historical crime trends
+* *data-flow.pdf* - diagram illustrating data flow from ETL to Metabase
+
 ## Resources  
 **Prefect:**
 - example pipeline: https://docs.prefect.io/v3/examples/run-api-sourced-etl
