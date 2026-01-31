@@ -9,6 +9,8 @@ The data pipeline (roughly) follows the following architecture:
 
 The goal of this project was to build a tool that can monitor crime & safety trends in Cambridge, MA. Ideally, this project can serve as a general template for other projects looking to achieve similar goals. Additionally, any projects that involve writing pipelines consisting of API extracts, simple data transformations, and visualizations using BI tools may use this code as reference.
 
+The associated article for this project can be found [here](https://medium.com/data-engineer-things/creating-a-data-pipeline-to-monitor-local-crime-trends-e2493c20da39).
+
 ## Tooling
 Development was done in python 3.12. The required dependencies are listed in *requirements.txt*. 
 * For more info on recreating the dev environment, click [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#using-a-requirements-file).
@@ -41,6 +43,39 @@ Development was done in python 3.12. The required dependencies are listed in *re
 **Diagrams**
 * *metabase-dashboard.pdf* - Metabase dashboard visualizing recent & historical crime trends
 * *data-flow.pdf* - diagram illustrating data flow from ETL to Metabase
+
+**Miscellaneous**
+* sample_env.txt - sample .env file required to run this project
+
+## Running the Project
+### Requirements
+- python 3.x
+- Docker
+- Docker Desktop (if you're on Windows/MacOS)
+- [Prefect Cloud account](https://docs.prefect.io/v3/how-to-guides/cloud/connect-to-cloud)
+- [Socrata API token](https://dev.socrata.com/docs/app-tokens.html)
+
+### How to Run the Pipeline
+1. Clone the repo and recreate the dev environment from requirements.txt.
+   Read [here](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#using-a-requirements-file) for more info.
+2. Create your own .env file and place it in the root directory of the project. It should have values for the following variables:
+   * SOCRATA_APP_TOKEN (this should be your app token for the Socrata API)
+   * POSTGRES_USER
+   * POSTGRES_PASSWORD
+   * POSTGRES_DB=cpd_db (this should be fixed)
+   * PGADMIN_DEFAULT_EMAIL
+   * PGADMIN_DEFAULT_PASSWORD
+   * METABASE_DB_USER
+   * METABASE_DB_PASSWORD
+   * METABASE_DB_NAME
+   Check out sample_env.txt for an example .env file.
+3. Log into Prefect Cloud by following [these instructions](https://docs.prefect.io/v3/how-to-guides/cloud/connect-to-cloud).
+4. Start up docker, open up your terminal to the project root directory and execute the following command to start up all the services:
+  * docker compose up -d
+5. Activate your virtual environment and run the pipeline. In the terminal, run the following command in the project root directory: 
+   * python etl_pipeline.py
+6. Go to Metabase and connect to your PostgreSQL instance.
+7. Create whatever dashboards/analytical figures you want. For inspiration, check out the [docs](https://www.metabase.com/learn/metabase-basics/overview/tour-of-metabase).
 
 ## Resources  
 **Prefect:**

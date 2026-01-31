@@ -1,0 +1,12 @@
+SOCRATA_APP_TOKEN=jkl09s23rjs
+
+POSTGRES_USER=spongebob
+POSTGRES_PASSWORD=krabbypatty
+POSTGRES_DB=cpd_db
+
+PGADMIN_DEFAULT_EMAIL=spongebob@gmail.com
+PGADMIN_DEFAULT_PASSWORD=gary
+
+METABASE_DB_USER=metabase
+METABASE_DB_PASSWORD=mysecretpassword
+METABASE_DB_NAME=metabaseappdb
