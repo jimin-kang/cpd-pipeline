@@ -70,8 +70,8 @@ Development was done in python 3.12. The required dependencies are listed in *re
    * METABASE_DB_NAME
    Check out sample_env.txt for an example .env file.
 3. Log into Prefect Cloud by following [these instructions](https://docs.prefect.io/v3/how-to-guides/cloud/connect-to-cloud).
-4. Start up docker, open up your terminal to the project root directory and execute the following command to start up all the services:
-  * docker compose up -d
+4. Start up docker, open up your terminal to the project root directory and execute the following command to start up all the services: 
+   * docker compose up -d
 5. Activate your virtual environment and run the pipeline. In the terminal, run the following command in the project root directory: 
    * python etl_pipeline.py
 6. Go to Metabase and connect to your PostgreSQL instance.
